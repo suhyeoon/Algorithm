@@ -84,3 +84,63 @@ d c a
 d a c
 d a b
 ```
+
+## STL 함수로 순열 구하기
+
+> #include \<algorithm>
+
+### next_permutation
+
+> `bool` 타입을 리턴한다. 
+
+> `nPn` 을 구하는 함수다.
+
+```cpp
+next_permutation(vec.begin(),vec.end());
+```
+- 시작 위치, 끝 위치를 인수로 넘겨 해당 범위를 넘겨주면 <u>인수로 넘긴 범위를 기준으로</u> <u>다음 순열 모양새로 정렬을 한 후</u> `true` 를 리턴한다.
+  - 다음 순열이 없다면 `false` 리턴
+
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main(){
+
+	vector<int> v = {1, 2, 3};
+	
+  // 3P3 출력하는 코드
+
+	do
+	{
+		for(int i = 0; i < v.size(); i++)
+		{
+			cout << v[i] << " ";
+		}
+		cout << '\n';
+
+	}while(next_permutation(v.begin(),v.end()));   
+
+}
+```
+```
+출력
+
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+```
+
+- 다음 순열이 있다면 `true`를 리턴하고 없으면 `false`를 리턴하므로 위와 같이 while 반복 문의 조건으로 넣어 모든 순열을 전부 구할 수 있다.
+- 위의 코드는 {1, 2, 3}의 ✨`3P3`✨ 순열들을 순열 순서대로 출력하게 된다.
+
+#### nPr
+
+`next_permutation`은 `nPn` 순열을 구한다.
